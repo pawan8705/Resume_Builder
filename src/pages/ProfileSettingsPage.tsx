@@ -1,7 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// src/pages/ProfileSettingsPage.tsx — Full Profile + Settings Page
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -24,13 +21,10 @@ import {
   EyeOff,
   Camera,
   ArrowLeft,
-  Check,
   AlertTriangle,
   Key,
-  Smartphone,
   CreditCard,
   ChevronRight,
-  LayoutDashboard,
 } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { logout } from "@/store/slices/authSlice";
@@ -576,7 +570,7 @@ export default function ProfileSettingsPage() {
                         label: "Marketing Emails",
                         desc: "Promotions and special offers",
                       },
-                    ].map((n, i) => (
+                    ].map((n) => (
                       <div
                         key={n.key}
                         className={`flex items-center justify-between p-4 rounded-xl transition-colors ${isDark ? "hover:bg-white/3" : "hover:bg-slate-50"}`}

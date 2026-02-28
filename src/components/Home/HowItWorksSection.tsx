@@ -118,7 +118,10 @@ export default function HowItWorksSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="how-it-works" className="py-24 px-5 overflow-hidden">
+    <section
+      id="how-it-works"
+      className={`py-24 px-5 overflow-hidden ${isDark ? "bg-[#0a0a18]" : "bg-white"}`}
+    >
       <div className="max-w-6xl mx-auto" ref={ref}>
         {/* Header */}
         <motion.div

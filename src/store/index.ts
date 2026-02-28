@@ -1,6 +1,7 @@
+// src/store/index.ts
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer  from './slices/authSlice'
-import themeReducer from './slices/themeSlice'
+import authReducer   from './slices/authSlice'
+import themeReducer  from './slices/themeSlice'
 import resumeReducer from './slices/resumeSlice'
 
 export const store = configureStore({
@@ -9,6 +10,8 @@ export const store = configureStore({
     theme:  themeReducer,
     resume: resumeReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 })
 
 export type RootState   = ReturnType<typeof store.getState>

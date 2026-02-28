@@ -1,22 +1,22 @@
+// src/pages/HomePage.tsx
 import { lazy, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useAppSelector } from "@/store/hooks";
 import Navbar from "@/components/layout/Navbar";
-import HeroSection from "../components/Home/HeroSection";
+import HeroSection from "@/components/home/HeroSection";
 import AuthPage from "@/pages/AuthPage";
 
-const FeaturesSection = lazy(
-  () => import("../components/Home/FeaturesSection"),
-);
+const FeaturesSection = lazy(() => import("@/components/home/FeaturesSection"));
 const HowItWorksSection = lazy(
-  () => import("../components/Home/HowItWorksSection"),
+  () => import("@/components/home/HowItWorksSection"),
 );
-const ReviewsSection = lazy(() => import("../components/Home/ReviewsSection"));
+const ReviewsSection = lazy(() => import("@/components/home/ReviewsSection"));
 const WhyChooseSection = lazy(
-  () => import("../components/Home/WhyChooseSection"),
+  () => import("@/components/home/WhyChooseSection"),
 );
-const PricingSection = lazy(() => import("../components/Home/PricingSection"));
-const CTASection = lazy(() => import("../components/Home/CTASection"));
-const Footer = lazy(() => import("../components/layout/Footer"));
+const PricingSection = lazy(() => import("@/components/home/PricingSection"));
+const CTASection = lazy(() => import("@/components/home/CTASection"));
+const Footer = lazy(() => import("@/components/layout/Footer"));
 
 function Loader() {
   return (
@@ -34,17 +34,16 @@ function Loader() {
 
 export default function HomePage() {
   const [searchParams] = useSearchParams();
-  const authMode = searchParams.get("auth"); // 'signin' | 'signup' | 'forgot' | null
+  const isDark = useAppSelector((s) => s.theme.theme === "dark");
+  const authMode = searchParams.get("auth");
 
-  // Agar ?auth= param hai toh AuthPage full screen dikhao
   if (authMode && ["signin", "signup", "forgot"].includes(authMode)) {
     return <AuthPage />;
   }
 
   return (
     <div
-      className="min-h-screen"
-      style={{ backgroundColor: "var(--bg-primary, #0a0a0f)" }}
+      className={`min-h-screen transition-colors duration-300 ${isDark ? "bg-[#08080f]" : "bg-white"}`}
     >
       <Navbar />
       <HeroSection />

@@ -1,4 +1,5 @@
-// src/components/builder/BuilderTopbar.tsx — with Reset option
+// src/components/builder/BuilderTopbar.tsx
+// ✅ Responsive topbar — works at 320px+
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -42,7 +43,7 @@ export default function BuilderTopbar({
   lastSaved,
 }: Props) {
   const isDark = useAppSelector((s) => s.theme.theme === "dark");
-  const [moreOpen, setMoreOpen] = useState(false);
+  const [menuOpen, setMenu] = useState(false);
 
   const atsColor =
     atsScore >= 85
@@ -50,7 +51,7 @@ export default function BuilderTopbar({
       : atsScore >= 65
         ? "text-amber-400 bg-amber-400/10 border-amber-400/25"
         : "text-red-400 bg-red-400/10 border-red-400/25";
-  const atsTextOnly =
+  const atsTxt =
     atsScore >= 85
       ? "text-green-400"
       : atsScore >= 65
@@ -58,34 +59,37 @@ export default function BuilderTopbar({
         : "text-red-400";
 
   const divB = isDark ? "border-white/[0.07]" : "border-black/[0.08]";
-  const topBg = isDark
+  const bg = isDark
     ? "bg-[#0a0a18]/97 backdrop-blur-xl"
     : "bg-white/97 backdrop-blur-xl";
-  const iconBtn = `size-8 flex items-center justify-center rounded-lg cursor-pointer border transition-all shrink-0
+
+  const iconBtn = `size-8 flex items-center justify-center rounded-lg cursor-pointer border-none shrink-0 transition-all
     ${
       isDark
-        ? "bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:text-slate-200"
-        : "bg-black/4 border-black/8 text-slate-500 hover:bg-black/8 hover:text-slate-700"
+        ? "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200"
+        : "bg-black/4 text-slate-500 hover:bg-black/8 hover:text-slate-700"
     }`;
 
   return (
     <div
-      className={`h-11 px-2.5 flex items-center gap-1.5 shrink-0 sticky top-0 z-30 border-b ${topBg} ${divB}`}
+      className={`h-11 px-2.5 flex items-center gap-1.5 shrink-0 sticky top-0 z-30 border-b ${bg} ${divB}`}
     >
       {/* Title input */}
       <input
         value={resumeTitle}
         onChange={(e) => onTitleChange(e.target.value)}
-        className={`min-w-0 w-0 flex-[1_1_50px] bg-transparent border-none outline-none text-[13px] font-bold truncate
-          ${isDark ? "text-slate-100 placeholder:text-slate-600" : "text-slate-900 placeholder:text-slate-400"}`}
-        placeholder="Resume title..."
         maxLength={40}
+        className={`min-w-0 flex-[1_1_50px] w-0 bg-transparent border-none outline-none
+          text-[13px] font-bold truncate
+          ${isDark ? "text-slate-100 placeholder:text-slate-600" : "text-slate-900 placeholder:text-slate-400"}`}
+        placeholder="Resume title…"
       />
 
       <div className="flex items-center gap-1 shrink-0">
-        {/* ATS badge */}
+        {/* ATS badge — visible ≥ 360px */}
         <span
-          className={`hidden xs:flex items-center h-6 px-2 rounded-full text-[10px] font-extrabold border shrink-0 ${atsColor}`}
+          className={`hidden min-[360px]:flex items-center h-6 px-2 rounded-full
+          text-[10px] font-extrabold border shrink-0 ${atsColor}`}
         >
           {atsScore}%
         </span>
@@ -94,48 +98,51 @@ export default function BuilderTopbar({
         <button
           onClick={onToggleAI}
           title="AI Assistant"
-          className={`${iconBtn} ${showAI ? "!bg-violet-500/12 !border-violet-500/30 !text-violet-400" : ""}`}
+          className={`${iconBtn} ${showAI ? "!bg-violet-500/12 !text-violet-400" : ""}`}
         >
           <Sparkles size={13} />
         </button>
 
-        {/* PDF download */}
+        {/* PDF download — always visible */}
         <motion.button
           whileTap={{ scale: 0.93 }}
           onClick={onExport}
           className="flex items-center gap-1 h-8 px-2.5 rounded-lg border-none cursor-pointer
             bg-gradient-to-r from-violet-600 to-blue-600 text-white text-[11px] font-bold
-            shadow-[0_0_12px_rgba(124,58,237,0.4)] hover:opacity-90 shrink-0"
+            hover:opacity-90 shrink-0"
+          style={{ boxShadow: "0 0 10px rgba(124,58,237,0.4)" }}
         >
           <Download size={11} /> PDF
         </motion.button>
 
-        {/* ⋯ overflow menu */}
+        {/* ⋯ More menu */}
         <div className="relative">
-          <button onClick={() => setMoreOpen(!moreOpen)} className={iconBtn}>
-            {moreOpen ? <X size={12} /> : <MoreHorizontal size={14} />}
+          <button onClick={() => setMenu((v) => !v)} className={iconBtn}>
+            {menuOpen ? <X size={12} /> : <MoreHorizontal size={14} />}
           </button>
+
           <AnimatePresence>
-            {moreOpen && (
+            {menuOpen && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: -6 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: -6 }}
-                transition={{ duration: 0.12 }}
-                className={`absolute right-0 top-9 z-50 rounded-2xl border p-1.5 min-w-[190px]
-                  shadow-[0_20px_50px_rgba(0,0,0,0.4)]
-                  ${isDark ? "bg-[#12121e] border-white/8" : "bg-white border-black/8"}`}
+                transition={{ duration: 0.13 }}
+                className={`absolute right-0 top-10 z-50 rounded-2xl border p-2 min-w-[200px]
+                  shadow-[0_20px_60px_rgba(0,0,0,0.45)]
+                  ${isDark ? "bg-[#0f0f1e] border-white/8" : "bg-white border-black/8"}`}
               >
-                {/* ATS + autosave status */}
+                {/* ATS row */}
                 <div
-                  className={`flex items-center justify-between px-3 py-2 mb-1 rounded-xl ${isDark ? "bg-white/4" : "bg-black/4"}`}
+                  className={`flex items-center justify-between px-3 py-2 mb-1 rounded-xl
+                  ${isDark ? "bg-white/4" : "bg-slate-50"}`}
                 >
                   <div>
-                    <span
+                    <p
                       className={`text-xs font-semibold ${isDark ? "text-slate-400" : "text-slate-500"}`}
                     >
                       ATS Score
-                    </span>
+                    </p>
                     {lastSaved && (
                       <p
                         className={`text-[10px] ${isDark ? "text-slate-600" : "text-slate-400"}`}
@@ -144,46 +151,56 @@ export default function BuilderTopbar({
                       </p>
                     )}
                   </div>
-                  <span className={`text-sm font-black ${atsTextOnly}`}>
+                  <span className={`text-lg font-black ${atsTxt}`}>
                     {atsScore}%
                   </span>
                 </div>
 
+                {/* Actions */}
                 {[
                   {
-                    label: "Choose Template",
                     icon: Palette,
+                    label: "Change Template",
                     fn: onToggleTemplates,
-                    clr: "",
+                    red: false,
                   },
                   {
-                    label: isSaving ? "Saving…" : "Save Resume",
                     icon: isSaving ? Loader2 : Save,
+                    label: isSaving ? "Saving…" : "Save Resume",
                     fn: onSave,
-                    clr: "",
+                    red: false,
                   },
                   {
-                    label: "Reset Resume",
                     icon: RotateCcw,
+                    label: "Reset Resume",
                     fn: onReset,
-                    clr: "text-red-400",
+                    red: true,
                   },
                 ].map((item) => (
                   <button
                     key={item.label}
                     onClick={() => {
                       item.fn();
-                      setMoreOpen(false);
+                      setMenu(false);
                     }}
                     className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium
                       cursor-pointer border-none text-left transition-colors bg-transparent
-                      ${item.clr || (isDark ? "text-slate-200 hover:bg-white/6" : "text-slate-700 hover:bg-slate-50")}`}
+                      ${
+                        item.red
+                          ? "text-red-400 hover:bg-red-500/8"
+                          : isDark
+                            ? "text-slate-200 hover:bg-white/6"
+                            : "text-slate-700 hover:bg-slate-50"
+                      }`}
                   >
                     <item.icon
                       size={14}
                       className={
-                        item.clr ||
-                        (isDark ? "text-slate-500" : "text-slate-400")
+                        item.red
+                          ? "text-red-400"
+                          : isDark
+                            ? "text-slate-500"
+                            : "text-slate-400"
                       }
                     />
                     {item.label}

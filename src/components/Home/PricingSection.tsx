@@ -435,7 +435,10 @@ export default function PricingSection() {
         )}
       </AnimatePresence>
 
-      <section id="pricing" className="py-24 px-5">
+      <section
+        id="pricing"
+        className={`py-24 px-5 ${isDark ? "bg-[#08080f]" : "bg-slate-50"}`}
+      >
         <div className="max-w-6xl mx-auto" ref={ref}>
           {/* Header */}
           <motion.div

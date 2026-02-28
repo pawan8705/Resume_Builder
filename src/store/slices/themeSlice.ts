@@ -1,43 +1,30 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { storage } from '@/lib/utils'
+// src/store/slices/themeSlice.ts
+import { createSlice } from '@reduxjs/toolkit'
 
 type Theme = 'light' | 'dark'
 
-interface ThemeState {
-  theme: Theme
-}
-
-const getSavedTheme = (): Theme => {
-  const saved = storage.get<Theme>('theme')
-  if (saved === 'light' || saved === 'dark') return saved
-  // System preference check
-  if (typeof window !== 'undefined') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
+const getInitial = (): Theme => {
+  try {
+    const saved = localStorage.getItem('resumeai_theme') as Theme
+    if (saved === 'light' || saved === 'dark') return saved
+  } catch (e) {
+    console.warn('Failed to retrieve theme from localStorage:', e)
   }
-  return 'dark'
-}
-
-const initialState: ThemeState = {
-  theme: getSavedTheme(),
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
 const themeSlice = createSlice({
   name: 'theme',
-  initialState,
+  initialState: { theme: getInitial() as Theme },
   reducers: {
     toggleTheme: (state) => {
-      state.theme = state.theme === 'dark' ? 'light' : 'dark'
-      storage.set('theme', state.theme)
-      // DOM pe apply
-      document.documentElement.classList.toggle('light', state.theme === 'light')
+      state.theme = state.theme === 'light' ? 'dark' : 'light'
+      localStorage.setItem('resumeai_theme', state.theme)
       document.documentElement.classList.toggle('dark', state.theme === 'dark')
     },
-    setTheme: (state, action: PayloadAction<Theme>) => {
+    setTheme: (state, action: { payload: Theme }) => {
       state.theme = action.payload
-      storage.set('theme', action.payload)
-      document.documentElement.classList.toggle('light', action.payload === 'light')
+      localStorage.setItem('resumeai_theme', action.payload)
       document.documentElement.classList.toggle('dark', action.payload === 'dark')
     },
   },

@@ -43,7 +43,7 @@ export default function FeaturesSection() {
              : 'bg-white border-black/[0.07] shadow-sm hover:shadow-md'}`
 
   return (
-    <section id="features" className="py-24 px-5 overflow-hidden">
+    <section id="features" className={`py-24 px-5 overflow-hidden ${isDark ? "bg-[#08080f]" : "bg-slate-50"}`}>
       <div className="max-w-6xl mx-auto" ref={ref}>
 
         {/* ── Header ── */}

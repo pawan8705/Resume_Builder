@@ -50,7 +50,7 @@ function LogoutModal({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onCancel}
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-5"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-5 bg-[#fff]"
       style={{ background: "rgba(0,0,0,0.65)", backdropFilter: "blur(6px)" }}
     >
       <motion.div

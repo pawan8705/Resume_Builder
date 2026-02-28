@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// src/pages/AnalyticsPage.tsx — Resume Analytics Dashboard
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -10,10 +7,7 @@ import {
   Download,
   TrendingUp,
   Users,
-  BarChart2,
-  Calendar,
   FileText,
-  Star,
   Target,
   ChevronUp,
   ChevronDown,
