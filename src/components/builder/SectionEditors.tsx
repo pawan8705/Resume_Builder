@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/components/builder/SectionEditors.tsx — Tailwind CSS
-// ✅ No child components inside editors — plain <input> only = zero focus loss
 
 import { useAppSelector } from "@/store/hooks";
 import {

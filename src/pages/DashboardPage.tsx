@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/purity */
-// src/pages/DashboardPage.tsx — Full functionality with working CRUD
 
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'

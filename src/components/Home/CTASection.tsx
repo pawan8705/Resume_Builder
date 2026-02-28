@@ -1,4 +1,3 @@
-// src/components/home/CTASection.tsx
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles, ArrowRight } from "lucide-react";

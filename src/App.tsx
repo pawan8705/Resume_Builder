@@ -1,4 +1,3 @@
-// src/App.tsx — Complete routing
 import { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";

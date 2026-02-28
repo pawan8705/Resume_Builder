@@ -1,5 +1,3 @@
-// src/types/resume.types.ts
-
 export interface PersonalInfo {
   name: string
   title: string

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/components/home/PricingSection.tsx
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {

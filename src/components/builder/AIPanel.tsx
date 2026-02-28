@@ -1,6 +1,5 @@
 /* eslint-disable no-empty */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/components/builder/AIPanel.tsx — Working AI with Claude API
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";

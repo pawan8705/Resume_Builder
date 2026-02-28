@@ -1,6 +1,3 @@
-// src/components/builder/BuilderTopbar.tsx
-// ✅ Responsive topbar — works at 320px+
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {

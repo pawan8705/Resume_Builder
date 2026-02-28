@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/store/slices/authSlice.ts
-// ✅ Mock Auth — No Firebase needed
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 

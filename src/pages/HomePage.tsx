@@ -1,4 +1,3 @@
-// src/pages/HomePage.tsx
 import { lazy, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppSelector } from "@/store/hooks";

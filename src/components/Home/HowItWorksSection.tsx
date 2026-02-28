@@ -1,4 +1,3 @@
-// src/components/home/HowItWorksSection.tsx
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { CheckCircle2, Upload, PenLine, Cpu, Download } from "lucide-react";

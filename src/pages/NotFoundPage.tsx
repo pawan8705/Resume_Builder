@@ -1,5 +1,3 @@
-// src/pages/NotFoundPage.tsx — 404 page
-
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAppSelector } from "@/store/hooks";

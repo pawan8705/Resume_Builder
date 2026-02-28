@@ -1,4 +1,3 @@
-// src/components/home/FeaturesSection.tsx
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useAppSelector } from '@/store/hooks'

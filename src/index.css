@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-/* ── Reset: Browser default margin/padding hatao ── */
 * {
-  /* margin: 0;
-  padding: 0; */
   box-sizing: border-box;
 }
 

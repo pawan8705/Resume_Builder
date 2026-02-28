@@ -1,5 +1,3 @@
-// src/components/builder/BuilderSidebar.tsx — Tailwind CSS
-
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Check } from 'lucide-react'
 import { useAppSelector } from '@/store/hooks'

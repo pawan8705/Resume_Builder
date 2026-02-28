@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/static-components */
-// src/pages/ResumeBuilderPage.tsx
-// ✅ Complete Resume Builder — PDF via Blob+iframe (bulletproof)
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { useAppSelector } from "@/store/hooks";

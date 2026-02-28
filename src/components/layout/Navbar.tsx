@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-// src/components/layout/Navbar.tsx — Hash scroll + responsive fixed
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";

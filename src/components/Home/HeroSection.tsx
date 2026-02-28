@@ -1,4 +1,3 @@
-// src/components/home/HeroSection.tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";

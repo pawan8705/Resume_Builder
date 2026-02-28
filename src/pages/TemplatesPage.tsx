@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/pages/TemplatesPage.tsx — /templates route
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";

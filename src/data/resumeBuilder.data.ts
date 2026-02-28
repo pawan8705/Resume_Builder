@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/data/resumeBuilder.data.ts
 
 import { ResumeData, Template, SectionId } from '@/types/resume.types'
 import {

@@ -1,14 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/hooks/usePDFExport.ts
-// ═══════════════════════════════════════════════════════════════
-//  BULLETPROOF PDF EXPORT — Blob URL + Hidden iframe method
-//  WHY THIS WORKS:
-//  1. No popup (window.open) — browser can't block it
-//  2. No CDN required — works offline
-//  3. LivePreview uses 100% inline styles → perfect clone
-//  4. Blob URL bypasses CORS & CSP issues
-//  5. Hidden iframe print = only resume prints, page hidden
-// ═══════════════════════════════════════════════════════════════
 
 import { useCallback } from 'react'
 import toast from 'react-hot-toast'

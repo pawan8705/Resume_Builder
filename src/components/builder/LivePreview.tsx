@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/components/builder/LivePreview.tsx
-// ✅ 5 fully styled templates: modern, minimal, classic, creative, executive
 
 import {
   Mail,

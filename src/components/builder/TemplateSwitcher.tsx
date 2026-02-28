@@ -1,5 +1,3 @@
-// src/components/builder/TemplateSwitcher.tsx
-
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check } from "lucide-react";
 import { useAppSelector } from "@/store/hooks";

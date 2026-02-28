@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-empty */
-// src/store/slices/resumeSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface ResumeState {

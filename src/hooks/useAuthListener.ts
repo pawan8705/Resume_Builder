@@ -1,6 +1,3 @@
-// src/hooks/useAuthListener.ts
-// App.tsx mein ye hook call karo — Firebase session persist karega
-
 import { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/config/firebase'

@@ -1,9 +1,3 @@
-// src/config/firebase.ts
-// 🔴 .env.local mein ye variables add karo:
-// VITE_FIREBASE_API_KEY=xxx
-// VITE_FIREBASE_AUTH_DOMAIN=xxx.firebaseapp.com
-// VITE_FIREBASE_PROJECT_ID=xxx
-// VITE_FIREBASE_APP_ID=xxx
 
 import { initializeApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'

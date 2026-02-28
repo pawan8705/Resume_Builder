@@ -1,4 +1,3 @@
-// src/store/slices/themeSlice.ts
 import { createSlice } from '@reduxjs/toolkit'
 
 type Theme = 'light' | 'dark'
